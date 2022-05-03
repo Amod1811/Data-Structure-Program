@@ -13,7 +13,7 @@ public class QueueImplementation {
 
 		do {
 			System.out.println("Operations menu : ");
-			System.out.println("1. To display \n2. Push Element  \n3. To exit");
+			System.out.println("1. To display \n2. Inqueue Element \n3.dequeue Element\n3. To exit");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -27,7 +27,19 @@ public class QueueImplementation {
 				push(element);
 				System.out.println("-----------------------\n");
 				break;
-			
+			case 3:
+				pop();
+				System.out.println("-----------------------\n");
+				break;
+			case 4:
+				System.out.println("Top element : " + peek());
+				System.out.println("----------------------\n");
+				break;
+			default:
+				flag = false;
+				System.out.println("Thank you !");
+				System.out.println("------------------------\n");
+				break;
 			}
 		} while (flag);
 	}
@@ -60,5 +72,24 @@ public class QueueImplementation {
 		}
 	}
 
-	
+	// Pop method to remove element
+		public void pop() {
+			if (top == null) {
+				System.out.println("Queue is empty.");
+			} else {
+				Node temp = top;
+				System.out.println("Removing : " + temp.data);
+				top = top.next;
+			}
+		}
+
+		// Peek method to peek top element
+		public int peek() {
+			if (top != null) {
+				return top.data;
+			} else {
+				System.out.println("Queue is empty.");
+				return -1;
+			}
+		}
 }
